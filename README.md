@@ -1,6 +1,6 @@
 # Average CFD strategy return
 
-[MyFxBook](https://myfxbook.com) lists public records of CFD strategies.
+[MyFxBook](https://myfxbook.com) lists public records of CFD [strategies](https://www.myfxbook.com/strategies/all-strategies).
 The goal of this repo is to ftch them, analyze their average monthly return, then get the mean and medium return across all strategies.
 
 This should give you an idea of how much to expect a profitable CFD strategy to make per month.
