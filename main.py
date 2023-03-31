@@ -1,9 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Define the strategy page URL
 url = "https://www.myfxbook.com/strategies/copysignals/337097"
+
+# |%%--%%| <Hih70KeS0g|Ow9vaCEMCP>
 
 
 def get_monthly(url):
@@ -53,7 +56,7 @@ def get_strategies(url):
     return items
 
 
-import pandas as pd
+# |%%--%%| <Ow9vaCEMCP|aa3kUuxjO4>
 
 
 class Fetcher:
@@ -80,17 +83,34 @@ class Fetcher:
         print(df)
         df.to_csv("monthly.csv")
 
-    def stats(self):
+    def get_stats(self):
         df = pd.read_csv("monthly.csv")
         df.drop(df.columns[0], axis=1, inplace=True)
         df = df[df["0"] < 100]
+        return df
 
+    def print_stats(self):
+        df = self.get_stats()
+
+        print("The mean return is: ", df.mean()[0])
+        print("The median return is: ", df.median()[0])
+        return df
+
+    def plot_stats(self):
+        df = self.get_stats()
         df.plot.hist(bins=100)
-
-        print(df.mean())
-        print(df.median())
         plt.show()
 
 
+# |%%--%%| <aa3kUuxjO4|OfGt6R376F>
+
 fetcher = Fetcher()
-fetcher.stats()
+fetcher.get_strategies()
+fetcher.get_monthly()
+
+# |%%--%%| <OfGt6R376F|LHazr2oHjn>
+
+fetcher = Fetcher()
+df = fetcher.print_stats()
+
+fetcher.plot_stats()
